@@ -1,0 +1,2 @@
+-- return "catppuccin"
+return "sonokai"

@@ -7,4 +7,13 @@ return {
   -- { import = "astrocommunity.colorscheme.catppuccin" },
   -- { import = "astrocommunity.completion.copilot-lua-cmp" },
 
+  -- Lua
+  {
+    import = "astrocommunity.pack.lua",
+  },
+
+  -- Python
+  {
+    import = "astrocommunity.pack.python",
+  },
 }
