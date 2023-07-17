@@ -9,7 +9,7 @@ local M = {}
 function M.mappings(maps)
   local utils = require "astronvim.utils"
   local is_available = utils.is_available
-
+  local opts = { noremap = true, silent = true }
   -- Buffer
   maps.n["<leader>bn"] = { "<cmd>tabnew<cr>", desc = "New tab" }
   maps.n["<leader>bD"] = {
@@ -43,10 +43,14 @@ function M.mappings(maps)
   }
 
   -- Window jumping
-  maps.n["<C-h>"] = { "<C-w>h", desc = "jump to the right window" }
-  maps.n["<C-l>"] = { "<C-w>l", desc = "jump to the left window" }
-  maps.n["<C-j>"] = { "<C-w>j", desc = "jump to the bottom window" }
-  maps.n["<C-k>"] = { "<C-w>k", desc = "jump to the up window" }
+  -- maps.n["<C-h>"] = { "<C-w>h", desc = "jump to the right window" }
+  -- maps.n["<C-l>"] = { "<C-w>l", desc = "jump to the left window" }
+  -- maps.n["<C-j>"] = { "<C-w>j", desc = "jump to the bottom window" }
+  -- maps.n["<C-k>"] = { "<C-w>k", desc = "jump to the up window" }
+
+  -- Indent
+  maps.v["<"] = { "<gv", desc = "Unindent visual block" }
+  maps.v[">"] = { ">gv", desc = "Indent visual block" }
 
   -- Comments, Comment.nvim
   if is_available "Comment.nvim" then
@@ -85,6 +89,19 @@ function M.mappings(maps)
     maps.o["<leader><leader>s"] = {
       function() require("flash").treesitter() end,
       desc = "Flash Treesitter",
+    }
+  end
+
+  -- vim-visual-multi
+  if is_available "vim-visual-multi" then
+    -- visual multi
+    vim.g.VM_maps = {
+      ["Find Under"] = "<C-n>",
+      ["Find Subword Under"] = "<C-n>",
+      ["Select Cursor Up"] = "<C-S-Up>",
+      ["Select Cursor Down"] = "<C-S-Down>",
+      ["Select All"] = "<C-S-n>",
+      ["Skip Region"] = "<C-x>",
     }
   end
 

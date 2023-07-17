@@ -1,2 +1,2 @@
--- return "catppuccin"
-return "sonokai"
+return "catppuccin"
+-- return "sonokai"
